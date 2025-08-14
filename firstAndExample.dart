@@ -2,13 +2,13 @@
 import 'dart:io';
 
 void main () {
-  String greet = 'Hello\nThis is my first dart programm';
+  final String greet = 'Hello\nThis is my first dart programm';
   String name;
 
   double result = 0.0;
 
   List<int> numbers = [3, 5, 7 , 13];
-  
+
   var decision;
   
   print('\n\t-->Start<--\n');
@@ -28,8 +28,8 @@ void main () {
   if(decision == 'calc') {
 
     result = calc();
-    String stringNumber = result.toStringAsFixed(4);
-    print('\nResult: $stringNumber');
+    String numberFormat = result.toStringAsFixed(4);
+    print('\nResult: $numberFormat');
 
   } else if(decision == 'pi' && name == 'Fabian') {
     personalInfo();
@@ -59,41 +59,23 @@ double functionResult = 0.0;
 print('Wähle die Operation');
 var choice = stdin.readLineSync();
 
+print('Insert number #1: ');
+double zahl = double.parse(stdin.readLineSync()!);
+
+print('Insert number #2: ');
+double zahl2 = double.parse(stdin.readLineSync()!);
+
 switch (choice) {
     case '+':
-      print('Insert number #1: ');
-      double zahl = double.parse(stdin.readLineSync()!);
-
-      print('Insert number #2: ');
-      double zahl2 = double.parse(stdin.readLineSync()!);
-
       functionResult = zahl + zahl2;
       break;
     case '-': 
-      print('Insert number #1: ');
-      double zahl = double.parse(stdin.readLineSync()!);
-
-      print('Insert number #2: ');
-      double zahl2 = double.parse(stdin.readLineSync()!);
-
       functionResult = zahl - zahl2;
       break;
     case '*':
-      print('Insert number #1: ');
-      double zahl = double.parse(stdin.readLineSync()!);
-
-      print('Insert number #2: ');
-      double zahl2 = double.parse(stdin.readLineSync()!);
-
       functionResult = zahl * zahl2;
       break;
     case '/':
-      print('Insert number #1: ');
-      double zahl = double.parse(stdin.readLineSync()!);
-
-      print('Insert number #2: ');
-      double zahl2 = double.parse(stdin.readLineSync()!);
-
       functionResult = zahl / zahl2;
       break;
     default:
@@ -110,11 +92,11 @@ switch (choice) {
 // ############################################################################################
 
 personalInfo() {
-  Map<String, dynamic> personalInformation = {'\nName' : 'Strottmann' , '\nFirst Name' : 'Fabian' , '\nBirth date' : '09.07.1988' , 
+  final Map<String, dynamic> personalInformation = {'\nName' : 'Strottmann' , '\nFirst Name' : 'Fabian' , '\nBirth date' : '09.07.1988' , 
   '\nAddress' : 'Schilfkamp 20' , '\nPostal code' : 30851 , '\nLocation' : 'Langehagen'};
 
-  print('\n\n Mapgroesse');
-  print(personalInformation.length);
+/*   print('\n\nMapgroesse');
+  print(personalInformation.length); */
 
   print('\n\nPersonal information\n $personalInformation');
  }
