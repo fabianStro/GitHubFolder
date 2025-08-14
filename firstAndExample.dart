@@ -3,18 +3,19 @@ import 'dart:io';
 
 void main () {
   String greet = 'Hello\nThis is my first dart programm';
+  String name;
+
   double result = 0.0;
-  
 
+  List<int> numbers = [3, 5, 7 , 13];
   
-  var name;
   var decision;
-
+  
   print('\n\t-->Start<--\n');
   print('$greet\n');
 
   print('Insert name: ');
-  name = stdin.readLineSync()!; 
+  name = stdin.readLineSync()!;    
   
   print('\n--------------------------------------------------');
   print('\nHello $name\n');
@@ -23,8 +24,6 @@ void main () {
   print('\nCalculator (calc*) or perosnal information (pi)?');
   print('Zahlenbereich -9.223.372.036.854.775.808 bis 9.223.372.036.854.775.807.');
   decision = stdin.readLineSync();
-
-  
 
   if(decision == 'calc') {
 
@@ -111,10 +110,10 @@ switch (choice) {
 // ############################################################################################
 
 personalInfo() {
-  var personalInformation = {'\nName' : 'Strottmann' , '\nFirst Name' : 'Fabian' , '\nBirth date' : '09.07.1988' , 
+  Map<String, dynamic> personalInformation = {'\nName' : 'Strottmann' , '\nFirst Name' : 'Fabian' , '\nBirth date' : '09.07.1988' , 
   '\nAddress' : 'Schilfkamp 20' , '\nPostal code' : 30851 , '\nLocation' : 'Langehagen'};
 
-  print('\n\nArray bzw. Mapgroesse');
+  print('\n\n Mapgroesse');
   print(personalInformation.length);
 
   print('\n\nPersonal information\n $personalInformation');
