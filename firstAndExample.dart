@@ -49,7 +49,7 @@ void main () {
 
 }
 // ############################################################################################
-// Function Section
+// Claculator Function Section
 // ############################################################################################
 
 // double calc(double zahl, double zahl2)
@@ -87,16 +87,17 @@ switch (choice) {
 
   return functionResult;
 }
+
 // ############################################################################################
-// Personal Information Section
+// Personal Information Function Section
 // ############################################################################################
 
 personalInfo() {
   final Map<String, dynamic> personalInformation = {'\nName' : 'Strottmann' , '\nFirst Name' : 'Fabian' , '\nBirth date' : '09.07.1988' , 
   '\nAddress' : 'Schilfkamp 20' , '\nPostal code' : 30851 , '\nLocation' : 'Langehagen'};
 
-/*   print('\n\nMapgroesse');
-  print(personalInformation.length); */
+  print('\n\nMapgroesse');
+  print(personalInformation.length);
 
   print('\n\nPersonal information\n $personalInformation');
  }
