@@ -66,6 +66,8 @@ void main() {
 
   totalCosts = orderValue + dummyDelivery;
 
+  print('Betelldetails\n\n');
+
   print('Bestellwert: $orderValue');
   print('Entfernung: $distance');
   print('Grundliefergebühr: $distanceCost');
