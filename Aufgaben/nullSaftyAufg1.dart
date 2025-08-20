@@ -10,7 +10,7 @@ void main() {
   /* 
             Wenn ich die for-Schleife funktioniert der Code ohne Probleme, was leider 
             ohne die Schleife nicht der Fall ist und ich den Fehler nicht sehe. Er 
-            führt die if-Anweisungen nicht aus
+            führt keine¥ if-Anweisungen aus
   */
 
   int counterRain = 0;
@@ -37,25 +37,33 @@ void main() {
   if (temps[0] == null) {
     counterTemp++;
     print('HIER');
-  } else if (temps[1] == null) {
+  }
+  if (temps[1] == null) {
     counterTemp++;
-  } else if (temps[2] == null) {
+    print('HIER 2');
+  }
+  if (temps[2] == null) {
     counterTemp++;
+    print('HIER 3');
   }
 
   if (rains[0] == null) {
     counterRain++;
-  } else if (rains[1] == null) {
+  }
+  if (rains[1] == null) {
     counterRain++;
-  } else if (rains[2] == null) {
+  }
+  if (rains[2] == null) {
     counterRain++;
   }
 
   if (winds[0] == null) {
     counterWind++;
-  } else if (winds[1] == null) {
+  }
+  if (winds[1] == null) {
     counterWind++;
-  } else if (winds[2] == null) {
+  }
+  if (winds[2] == null) {
     counterWind++;
   }
   //}
@@ -70,7 +78,7 @@ void main() {
       ((winds[0] ?? 0.0) + (winds[1] ?? 0.0) + (winds[2] ?? 0.0)) /
       (3 - counterWind);
 
-  print('Hallo 2');
+  // print('Hallo 2');
 
   print('\nNull Einträge Regen: $counterRain');
   print('Null Einträge Wind: $counterWind');
