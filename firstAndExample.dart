@@ -21,7 +21,7 @@ void main(List<String> nameArg) {
   /* 
     stdout.write('Insert name: ');
     print(name);
-    name = stdin.readLineSync()!; 
+    name = stdin.readLineSync()!;
   */
 
   print('\n--------------------------------------------------');
