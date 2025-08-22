@@ -1,5 +1,5 @@
 void main() {
-  List<int> points = [4, 5, 4, 2, 6, 6, 3];
+  // List<int> points = [4, 5, 4, 2, 6, 6, 3];
   List<String> names = [
     'Julietta',
     'Benjamino',
