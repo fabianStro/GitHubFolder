@@ -3,8 +3,8 @@ void main() {
   int length = points.length;
   int result = 0;
 
-  for (int x = 0; x < length; x++) {
-    result += points[x];
+  for (int value in points) {
+    result += points[value];
   }
   print('Average: ${result / length}');
 }
