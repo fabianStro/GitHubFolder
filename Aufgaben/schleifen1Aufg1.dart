@@ -11,6 +11,6 @@ void main() {
   ];
 
   for (String name in names) {
-    print('Name: $name');
+    print('Name: $name\n\n');
   }
 }
