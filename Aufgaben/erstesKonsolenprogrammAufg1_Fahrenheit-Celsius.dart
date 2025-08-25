@@ -4,7 +4,7 @@ void main() {
   String fahrenheit, celsius;
   double? f, c;
 
-  stdout.write('Was möchtest du berechnen?\n --> ');
+  stdout.write('Was möchtest du berechnen?\n--> ');
   String decisiion = stdin.readLineSync() ?? '';
 
   if (decisiion.toLowerCase() == 'fahrenheit') {
