@@ -4,7 +4,8 @@ import 'dart:io';
 void main(List<String> user) {
   final String greet = 'Hello\nWelcome to my First Dart Program\n';
   String name = user[0];
-  var decision;
+  String decision;
+  String numberFormat;
   double result = 0.0;
 
   /* 
@@ -12,22 +13,22 @@ void main(List<String> user) {
     Map<String, int> divMap = {'Erster Key': 1, 'Zweiter Key': 2, 'Dritter Key': 3, 'Vierter Key': 4}; 
   */
 
-  print('\n\t-->Start<--\n');
-  print('$greet\n');
+  print('\n\t--> Start <--\n');
+  print('$greet');
 
   print('\n--------------------------------------------------');
   print('\nHello $name\n');
 
   print('\nCalculator (calc) or perosnal information (pi)?');
 
-  decision = stdin.readLineSync();
+  decision = stdin.readLineSync() ?? '';
   decision = decision.toLowerCase();
 
   print('\nYou have chosen: $decision\n');
 
   if (decision == 'calc' || decision == 'calculator') {
     result = calc();
-    String numberFormat = result.toStringAsFixed(4);
+    numberFormat = result.toStringAsFixed(4);
     print('\nResult: $numberFormat');
   } else if (decision == 'pi' && name == 'Fabian') {
     personalInfo();
@@ -40,7 +41,7 @@ void main(List<String> user) {
   }
 
   print('\nWas für ein Hohn');
-  print('\n\t-->Ende<--\n');
+  print('\n\t--> Ende <--\n');
 }
 // ############################################################################################
 // Claculator Function Section
@@ -50,36 +51,45 @@ void main(List<String> user) {
 // Werte werden in der Funktion abgefragt
 double calc() {
   double functionResult = 0.0;
+  double? zahl;
+  double? zahl2;
+  String operant;
+
   stdout.write('Wähle die Operation (+, -, *, /): ');
-  var operant = stdin.readLineSync();
+  operant = stdin.readLineSync() ?? '';
 
   stdout.write('Insert number #1: ');
-  double zahl = double.parse(stdin.readLineSync()!);
+  zahl = double.tryParse(stdin.readLineSync() ?? '0');
 
   stdout.write('Insert number #2: ');
-  double zahl2 = double.parse(stdin.readLineSync()!);
-
+  zahl2 = double.tryParse(stdin.readLineSync() ?? '0');
   /* 
     Für den switch ist kein break erforderlich
     !!!! fallthrough !!!
   */
-
-  switch (operant) {
-    case '+':
-      functionResult = zahl + zahl2;
-    case '-':
-      functionResult = zahl - zahl2;
-    case '*':
-      functionResult = zahl * zahl2;
-    case '/':
-      functionResult = zahl / zahl2;
-    default:
+  if (zahl == null || zahl2 == null) {
+    print('Invalid number input');
+    return 0.0;
+  } else {
+    if (operant != '+' && operant != '-' && operant != '*' && operant != '/') {
       print('Invalid operation');
-      return 0.0;
+    } else {
+      switch (operant) {
+        case '+':
+          functionResult = zahl + zahl2;
+        case '-':
+          functionResult = zahl - zahl2;
+        case '*':
+          functionResult = zahl * zahl2;
+        case '/':
+          functionResult = zahl / zahl2;
+        default:
+          print('Invalid operation');
+          return 0.0;
+      }
+      print('\n--> Calculation done');
+    }
   }
-
-  print('\n-->Calculation done');
-
   return functionResult;
 }
 
