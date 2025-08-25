@@ -1,28 +1,19 @@
 // import 'dart:ffi';
 import 'dart:io';
 
-void main(List<String> nameArg) {
-  // print(nameArg);
-
-  final String greet = 'Hello\nThis is my first dart programm';
-  String name = nameArg[0];
-  dynamic decision;
-
+void main(List<String> user) {
+  final String greet = 'Hello\nWelcome to my First Dart Program\n';
+  String name = user[0];
+  var decision;
   double result = 0.0;
 
   /* 
     List<int> numbers = [3, 5, 7 , 13];
-    Map<String, int> divMap = {'Erster Key': 1, 'Zweiter Kex': 2, 'Dritter Kex': 3, 'Vierter Key': 4}; 
+    Map<String, int> divMap = {'Erster Key': 1, 'Zweiter Key': 2, 'Dritter Key': 3, 'Vierter Key': 4}; 
   */
 
   print('\n\t-->Start<--\n');
   print('$greet\n');
-
-  /* 
-    stdout.write('Insert name: ');
-    print(name);
-    name = stdin.readLineSync()!;
-  */
 
   print('\n--------------------------------------------------');
   print('\nHello $name\n');
@@ -31,6 +22,7 @@ void main(List<String> nameArg) {
 
   decision = stdin.readLineSync();
   decision = decision.toLowerCase();
+
   print('\nYou have chosen: $decision\n');
 
   if (decision == 'calc' || decision == 'calculator') {
@@ -54,11 +46,12 @@ void main(List<String> nameArg) {
 // Claculator Function Section
 // ############################################################################################
 
-// double calc(double zahl, double zahl2)
+// double calc(double zahl, double zahl2) -- wenn Werte aus main übergeben werden sollen
+// Werte werden in der Funktion abgefragt
 double calc() {
   double functionResult = 0.0;
   stdout.write('Wähle die Operation (+, -, *, /): ');
-  var choice = stdin.readLineSync();
+  var operant = stdin.readLineSync();
 
   stdout.write('Insert number #1: ');
   double zahl = double.parse(stdin.readLineSync()!);
@@ -66,18 +59,20 @@ double calc() {
   stdout.write('Insert number #2: ');
   double zahl2 = double.parse(stdin.readLineSync()!);
 
-  switch (choice) {
+  /* 
+    Für den switch ist kein break erforderlich
+    !!!! fallthrough !!!
+  */
+
+  switch (operant) {
     case '+':
       functionResult = zahl + zahl2;
     case '-':
       functionResult = zahl - zahl2;
-      break;
     case '*':
       functionResult = zahl * zahl2;
-      break;
     case '/':
       functionResult = zahl / zahl2;
-      break;
     default:
       print('Invalid operation');
       return 0.0;
@@ -102,8 +97,7 @@ personalInfo() {
     '\nLocation': 'Langehagen',
   };
 
-  print('\n\nMapgroesse');
-  print(personalInformation.length);
+  print('\nMapgroesse: ${personalInformation.length}');
 
-  print('\n\nPersonal information\n $personalInformation');
+  print('\nPersonal information\n $personalInformation');
 }

@@ -15,9 +15,7 @@ void main() {
     nameMap[names[i]] = points[i];
   }
 
-  for (String name in nameMap.keys) {
-    print('Name: $name');
-  }
+  for (String name in nameMap.keys) {}
   for (int point in nameMap.values) {
     print('Points: $point');
   }
