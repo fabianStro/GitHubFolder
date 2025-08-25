@@ -7,7 +7,7 @@ void main() {
   sex = stdin.readLineSync()!.toLowerCase();
 
   stdout.write('Enter the Age: ');
-  age = int.parse(stdin.readLineSync()!);
+  age = int.tryParse(stdin.readLineSync()!);
 
   switch (sex) {
     case 'male':
