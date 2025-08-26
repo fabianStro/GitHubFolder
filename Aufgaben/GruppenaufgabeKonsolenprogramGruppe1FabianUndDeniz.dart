@@ -19,6 +19,7 @@ void main() {
       endTip = (pay * tip) / 100;
       print('Das Trinkgeld beträgt: $endTip');
     }
+
     print('Weitere Rechnungen');
     more = stdin.readLineSync() ?? '';
 

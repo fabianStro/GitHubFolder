@@ -63,6 +63,7 @@ double calc() {
 
   stdout.write('Insert number #2: ');
   zahl2 = double.tryParse(stdin.readLineSync() ?? '0');
+
   /* 
     Für den switch ist kein break erforderlich
     !!!! fallthrough !!!
