@@ -1,7 +1,12 @@
 import 'dart:io';
 
 void main() {
-  String word = 'AnNa'.toLowerCase();
+  String? input = stdin.readLineSync();
+  if (input == null) {
+    print('Keine Eingabe erhalten.');
+    return;
+  }
+  String word = input.toLowerCase();
   //String wordToLower = word.toLowerCase();
   int counter = 0;
   //String reversed = wordToLower.split('').reversed.join();
