@@ -7,17 +7,15 @@ void main() {
     return;
   }
   String word = input.toLowerCase();
-  //String wordToLower = word.toLowerCase();
   int counter = 0;
-  //String reversed = wordToLower.split('').reversed.join();
   bool isPalindrom = true;
-
-  /*   
+  /*
+    String reversed = wordToLower.split('').reversed.join();   
       print(reversed);
       print(word);
       print(wordToLower); 
 
-      if (wordToLower == reversed) {
+      if (word == reversed) {
       print('$word ist ein Palindrom.');
       } else {
         print('$word ist KEIN Palindrom.');
@@ -27,9 +25,7 @@ void main() {
     /* stdout.write('Index: ${word[index]} \t');
     stdout.write('Counter: ${word[counter]}\n');
  */
-    if (word[index] == word[counter]) {
-      isPalindrom = true;
-    } else {
+    if (word[index] != word[counter]) {
       isPalindrom = false;
       break;
     }
