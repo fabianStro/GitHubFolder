@@ -15,6 +15,6 @@ reverseInitials(
     'First Initials: ${vorname1[5].toUpperCase()}.${nname1[3].toUpperCase()}.',
   );
   print(
-    'First Initials: ${vorname2[2].toUpperCase()}.${nname2[4].toUpperCase()}.',
+    'First Initials: ${vorname2[2].toUpperCase()}.${nname2[5].toUpperCase()}.',
   );
 }
