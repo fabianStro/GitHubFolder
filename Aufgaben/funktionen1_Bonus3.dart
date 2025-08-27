@@ -65,7 +65,7 @@ void printNumberTypes(List<int> numbers) {
 }
 
 void printDistribution(List<int> numbers) {
-  stdout.write('\nFür welche Zahl soll die Häufigkeit ausgegeben werden?');
+  stdout.write('\nFür welche Zahl soll die Häufigkeit ausgegeben werden?\n-> ');
   String? decision = stdin.readLineSync();
   int? gesuchteZahl = int.tryParse(decision ?? '');
 
