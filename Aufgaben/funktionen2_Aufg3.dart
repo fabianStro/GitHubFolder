@@ -6,9 +6,9 @@ void main(List<String> args) {
   String text3 =
       'Das Buch handelt weitgehend von Hobbits, und aus seinen Seiten kann ein Leser viel ueber ihren Charakter und ein wenig ueber ihre Geschichte erfahren. Weitere Einzelheiten sind auch in der Auswahl aus dem Roten Buch der Westmark zu finden, die unter dem Titel Der Hobbit bereits veroeffentlicht wurde. Jene Darstellung stammt aus den ersten Kapiteln des Roten Buches, die Bilbo selbst, der erste Hobbit, der in der ganzen Welt beruehmt wurde, verfasst und die er Hin und wieder zurueck genannt hat, er erzaehlt darin von seiner Fahrt in den Osten und seiner Rueckkehr: ein Abenteuer, durch das spaeter alle Hobbits in die grossen Ereignisse jenes Zeitalters, von denen hier berichtet wird, hineingezogen wurden. Viele Leser moegen indes gleich zu Beginn mehr ueber dieses bemerkenswerte Volk wissen wollen, waehrend manche vielleicht das erste Buch nicht besitzen. Fuer sie seien hier einige der wichtigeren Punkte aus der Hobbitkunde zusammengestellt und das erste Abenteuer kurz wiedergegeben.';
 
-  print('Gesamt Vokale Text #1: ${countVowels(text1)}\n');
-  print('Gesamt Vokale Text #2: ${countVowels(text2)}\n');
-  print('Gesamt Vokale Text #3: ${countVowels(text3)}\n');
+  print('Gesamt Vokale Text #1: ${countVowels(text1.toLowerCase())}\n');
+  print('Gesamt Vokale Text #2: ${countVowels(text2.toLowerCase())}\n');
+  print('Gesamt Vokale Text #3: ${countVowels(text3.toLowerCase())}\n');
 }
 
 int countVowels(String text) {

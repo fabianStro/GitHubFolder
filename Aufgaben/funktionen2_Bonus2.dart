@@ -3,5 +3,5 @@ void main(List<String> args) {
 }
 
 bool isNumberEven(int number) {
-  return number % 2 == 0 ? true : false;
+  return number % 2 == 0;
 }

@@ -2,8 +2,14 @@
 import 'dart:io';
 
 void main(List<String> user) {
+  String name;
+  if (user.isEmpty) {
+    name = 'Fabian';
+  } else {
+    name = user[0];
+  }
   final String greet = 'Hello\nWelcome to my First Dart Program\n';
-  String name = user[0];
+
   String decision;
   String numberFormat;
   double result = 0.0;
