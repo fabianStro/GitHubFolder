@@ -73,9 +73,9 @@ void printDistribution(List<int> numbers) {
     print('Ungültige Eingabe. Bitte eine gültige Zahl eingeben.');
   }
 
-  int anzahl = numbers.where((zahl) => zahl == gesuchteZahl).length;
+  int count = numbers.where((zahl) => zahl == gesuchteZahl).length;
 
-  print('Die Zahl $gesuchteZahl kommt $anzahl Mal in der Liste vor.');
+  print('Die Zahl $gesuchteZahl kommt $count Mal in der Liste vor.');
 }
 
 // Hauptfunktion:
