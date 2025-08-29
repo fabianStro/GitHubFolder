@@ -3,6 +3,7 @@ import 'dart:io';
 bool active = true;
 Map<int, String> taskList = {};
 String taskName = '';
+// bool checked = false;
 //##################################################################
 void main() {
   while (active == true) {
@@ -60,9 +61,11 @@ taskDone() {
   do {
     completed = int.tryParse(stdin.readLineSync() ?? '');
   } while (completed! > taskList.length);
+  // String? dummyTaskName = taskList[completed];
   for (int counter = 1; counter <= taskList.length; counter++) {
     if (counter == completed) {
-      taskList[counter] = '[X] ' + '\n';
+      // taskList[counter] = '[X] ' + '$taskName\n';
+      taskList[counter] = '[X]\n';
     }
   }
 }
@@ -73,8 +76,8 @@ addTask() {
   taskName = stdin.readLineSync() ?? '';
   int itemAvailable = taskList.length;
   int index = itemAvailable + 1;
-  // String indexAsString = index.toString();
-  taskList[index] = '\n[ ] ' + '$index' + ' ' + taskName + '\n';
+  //String taskNameBefore = '$index' + ' ' + taskName + '\n';
+  taskList[index] = '[ ] ' + '$index' + ' ' + taskName + '\n';
   print('$taskName hinzugefügt');
   return taskList;
 }
