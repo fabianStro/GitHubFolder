@@ -1,9 +1,10 @@
 import 'dart:io';
 
 Map<String, String> vocabularyList = {};
+int score = 0;
 
 void main() {
-  print('\n--> Welcome to the vocabulary trainer <--\n');
+  print('\n--> Welcome to the vocabulary coach <--\n');
   choose();
 }
 
@@ -22,6 +23,9 @@ void choose() {
     stdout.write('\nYour choice: ');
     selection = stdin.readLineSync() ?? '';
     selection = selection.toLowerCase();
+    if (selection != 'add' && selection != 'check' && selection != 'exit') {
+      print('\nChoice incorrect.\n');
+    }
   } while (selection != 'add' && selection != 'check' && selection != 'exit');
 
   switch (selection) {
@@ -33,7 +37,7 @@ void choose() {
       break;
     case 'exit':
     default:
-      exit(0);
+      exit();
   }
 }
 
@@ -41,8 +45,8 @@ void choose() {
 // vocabularyTest
 //####################################################
 void vocabularyTest() {
-  print('\n#############################################');
-  print('Your Coice ist Check Vocabulary');
+  print('\n###########################################');
+  print('Your Coice is Check Vocabulary');
   print('\nVocabulary word\n');
 
   for (var entry in vocabularyList.entries) {
@@ -50,18 +54,21 @@ void vocabularyTest() {
     stdout.write('Your Answer: ');
     String answer = stdin.readLineSync() ?? '';
     if (answer == entry.value) {
-      print('\nAnswer correct\n');
+      print('\n!!! Answer correct !!!\n');
+      score += 10;
     } else {
-      print('\nAnswer wrong\n');
+      print('\n??? Answer wrong ???\n');
     }
   }
-  choose();
+  scoring();
 }
 
 //####################################################
 // addEntries
 //####################################################
 void addEntries() {
+  print('\n#############################################');
+  print('Your choice is add words');
   String vocabulary, translation, more = 'yes';
 
   while (more == 'yes') {
@@ -79,7 +86,35 @@ void addEntries() {
 }
 
 //####################################################
-// showVocabularyList()
+// exit
+//####################################################
+void exit() {
+  print('\nCoach finished');
+  print('BYE');
+}
+
+//####################################################
+// scoring
+//####################################################
+void scoring() {
+  int maxScore = 0;
+
+  for (int index = 0; index <= vocabularyList.length - 1; index++) {
+    maxScore += 10;
+  }
+  /*  print(vocabularyList.length);
+  print('Your Score $score');
+  print('Max Score $maxScore'); */
+  double finalScore = (score / maxScore) * 100;
+  String result = finalScore.toStringAsFixed(2);
+  print('\nQuiz finished');
+  print('\n--> Your score is $result % <--\n');
+
+  choose();
+}
+
+//####################################################
+// showVocabularyList
 //####################################################
 void showVocabularyList(Map<String, String> vocabularyList) {
   print('\nVocabulary list');
