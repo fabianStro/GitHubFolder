@@ -1,14 +1,14 @@
 import 'dart:io';
 import 'dart:math';
 
-const pi = 3.14159265359;
+//final double pi = 3.14159265359;
 
 void main() {
-  String sph, cu, rect, pyr;
+  String sph, cu, rect, pyr, cyl;
 
-  print('\n\t--> Geometrie Rechner <--\n');
+  print('\n\t--> Geometrie Calculator <--\n');
   print('Which geometric body should be calculated?');
-  print('Sphere (sph), Cube (cu) or Rectangle (rect)?');
+  print('Sphere (sph), Cube (cu), Rectangle (rect) or Pyramid (pyr)?');
   String choice = stdin.readLineSync() ?? '';
   choice = choice.toLowerCase();
 
@@ -28,9 +28,13 @@ void main() {
     pyr = 'pyramid';
     print('You have chosen the $pyr\n');
     pyramid();
+  } else if (choice == 'zyl' || choice == 'zylinder') {
+    cyl = 'cylinder';
+    print('You have chosen the $cyl\n');
+    cylinder();
   } else {
-    print('You have to decide between sphere, cube or rectangle');
-    return;
+    print('You have to decide between sphere');
+    print('cube, rectangle, pyramid or cylinder');
   }
 
   // Sphere
@@ -117,13 +121,9 @@ void rectangle() {
   volume = length * width * height;
   surfaceArea = 2 * (length * width + length * height + width * height);
 
-  print(
-    'The transmitted dimensions are: Length = $length cm, Width = $width cm, Height = $height cm',
-  );
+  print('The transmitted dimensions are: Length = $length cm, Width = $width cm, Height = $height cm');
   print('Volume of the rectangle: ${volume.toStringAsFixed(2)} cm^3');
-  print(
-    'Surface area of the rectangle: ${surfaceArea.toStringAsFixed(2)} cm^2',
-  );
+  print('Surface area of the rectangle: ${surfaceArea.toStringAsFixed(2)} cm^2');
 }
 
 // ############################################################################################
@@ -151,9 +151,7 @@ void cylinder() {
   volume = pi * pow(radius, 2) * height;
   surfaceArea = 2 * pi * radius * (radius + height);
 
-  print(
-    'The transmitted dimensions are: Radius = $radius cm, Height = $height cm',
-  );
+  print('The transmitted dimensions are: Radius = $radius cm, Height = $height cm');
   print('Volume of the cylinder: ${volume.toStringAsFixed(2)} cm^3');
   print('Surface area of the cylinder: ${surfaceArea.toStringAsFixed(2)} cm^2');
 }
@@ -180,12 +178,8 @@ void pyramid() {
   volume = (1 / 3) * pow(side, 2) * height;
   surfaceArea = pow(side, 2) + (side * height / 2);
 
-  print(
-    'The transmitted dimensions are: Radius = $side cm, Height = $height cm',
-  );
-  print(
-    'Lateral surface of the pyramid: ${lateralSurface.toStringAsFixed(2)} cm^2',
-  );
+  print('The transmitted dimensions are: Radius = $side cm, Height = $height cm');
+  print('Lateral surface of the pyramid: ${lateralSurface.toStringAsFixed(2)} cm^2');
   print('Floor area of the pyramid: ${floorArea.toStringAsFixed(2)} cm^2');
   print('Volume of the pyramid: ${volume.toStringAsFixed(2)} cm^3');
   print('Surface area of the cylinder: ${surfaceArea.toStringAsFixed(2)} cm^2');

@@ -63,7 +63,6 @@ double calc() {
 
   stdout.write('Wähle die Operation (+, -, *, /): ');
   operant = stdin.readLineSync() ?? '';
-
   stdout.write('Insert number #1: ');
   zahl = double.tryParse(stdin.readLineSync() ?? '0');
 

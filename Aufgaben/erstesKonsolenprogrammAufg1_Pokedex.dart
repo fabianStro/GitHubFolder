@@ -2,7 +2,7 @@ import 'dart:io';
 
 void main() {
   int? index;
-  String? more, name;
+  String? more;
   Map<int, String> pokeliste = {
     1: 'Bisasam',
     2: 'Bisaknosp',
