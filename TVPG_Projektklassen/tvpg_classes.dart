@@ -1,6 +1,6 @@
 void main(List<String> args) {
   // Instance
-  /*   User user1 = User('The_GrimReaper', 'Fabian', 'mail@mail.com');
+  /*   User user1 = User(' ', 'Fabian', 'mail@mail.com');
   Broadcasts highschoolDxD = Broadcasts(
     'Highschool DxD',
     'Bilder/highschoolDxd.png',
