@@ -1,5 +1,6 @@
 void main(List<String> args) {
   Button b = Button('In den Warenkorb', width: 96, height: 32, radius: 4, fontSize: 14, padding: 8);
+  print('Ende');
 }
 
 class Button {
