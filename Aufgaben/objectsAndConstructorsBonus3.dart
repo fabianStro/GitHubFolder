@@ -1,10 +1,8 @@
 void main(List<String> args) {
-  Rectangle rectangle = Rectangle(3, 4);
+  Rectangle rectangle = Rectangle(5, 4);
 
-  /* 
-    Rectangle.calculateCircumference();
-    Rectangle.calculateArea();
-  */
+  rectangle.calculateCircumference();
+  rectangle.calculateArea();
 
   print('Ende');
 }
