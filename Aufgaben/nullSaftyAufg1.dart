@@ -1,5 +1,5 @@
-import 'dart:io';
-import 'dart:math';
+/* import 'dart:io';
+import 'dart:math'; */
 
 void main() {
   List<Map<String, double?>> weatherData = [
@@ -68,15 +68,9 @@ void main() {
   }
   //}
 
-  double? avgTemp =
-      ((temps[0] ?? 0.0) + (temps[1] ?? 0.0) + (temps[2] ?? 0.0)) /
-      (3 - counterTemp);
-  double? avgRain =
-      ((rains[0] ?? 0.0) + (rains[1] ?? 0.0) + (rains[2] ?? 0.0)) /
-      (3 - counterRain);
-  double? avgWind =
-      ((winds[0] ?? 0.0) + (winds[1] ?? 0.0) + (winds[2] ?? 0.0)) /
-      (3 - counterWind);
+  double? avgTemp = ((temps[0] ?? 0.0) + (temps[1] ?? 0.0) + (temps[2] ?? 0.0)) / (3 - counterTemp);
+  double? avgRain = ((rains[0] ?? 0.0) + (rains[1] ?? 0.0) + (rains[2] ?? 0.0)) / (3 - counterRain);
+  double? avgWind = ((winds[0] ?? 0.0) + (winds[1] ?? 0.0) + (winds[2] ?? 0.0)) / (3 - counterWind);
 
   // print('Hallo 2');
 
