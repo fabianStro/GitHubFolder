@@ -1,29 +1,29 @@
 void main(List<String> args) {
   // main Klasse
-  DataRepository dR = MockDatabaseRepository([], 0);
+  DataRepository dR = MockDatabaseRepository([]);
   dR.sendMaessage('Erste Maessage');
   dR.sendMaessage('Zweite Message');
   print(dR.getMessages());
+
   dR.delete(0);
   print('Removed');
   print(dR.getMessages());
 }
 
+//####################################################
 class MockDatabaseRepository implements DataRepository {
-  //final String message;
   List<String> messages = [];
-  int index;
 
-  // Constructor
-  MockDatabaseRepository(this.messages, this.index);
+  // Constructor ################
+  MockDatabaseRepository(this.messages);
 
-  // Overrides
-  @override
+  // Overrides ##################
+  @override // adden/ create
   void sendMaessage(String message) {
     messages.add(message);
   }
 
-  @override
+  @override // getMessage/ read
   List<String> getMessages() {
     return messages;
   }
@@ -31,12 +31,13 @@ class MockDatabaseRepository implements DataRepository {
   @override
   void update() {}
 
-  @override
+  @override // delete
   void delete(int index) {
     messages.removeAt(index);
   }
 }
 
+//####################################################
 abstract class DataRepository {
   void sendMaessage(String message);
   List<String> getMessages();
