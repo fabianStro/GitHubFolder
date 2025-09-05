@@ -1,41 +1,45 @@
-void main(List<String> args) {}
+void main(List<String> args) {
+  // main Klasse
+  DataRepository dR = MockDatabaseRepository([], 0);
+  dR.sendMaessage('Erste Maessage');
+  dR.sendMaessage('Zweite Message');
+  print(dR.getMessages());
+  dR.delete(0);
+  print('Removed');
+  print(dR.getMessages());
+}
 
-class ChatMessage implements DataRepository {
-  final String message;
+class MockDatabaseRepository implements DataRepository {
+  //final String message;
+  List<String> messages = [];
+  int index;
 
   // Constructor
-  ChatMessage(this.message);
+  MockDatabaseRepository(this.messages, this.index);
 
   // Overrides
   @override
   void sendMaessage(String message) {
-    print('Message sent: $message');
+    messages.add(message);
   }
 
   @override
-  List<ChatMessage> getMessages() {
-    return [this];
+  List<String> getMessages() {
+    return messages;
   }
-
-  @override
-  void create() {}
-
-  @override
-  void read() {}
 
   @override
   void update() {}
 
   @override
-  void delete() {}
+  void delete(int index) {
+    messages.removeAt(index);
+  }
 }
 
 abstract class DataRepository {
   void sendMaessage(String message);
-  List<ChatMessage> getMessages();
-
-  void create();
-  void read();
+  List<String> getMessages();
   void update();
-  void delete();
+  void delete(int index);
 }
