@@ -1,16 +1,19 @@
+import 'dart:io';
+
 void main(List<String> args) {
   // main Klasse
   DataRepository dR1 = MockDatabaseRepository([]);
   DataRepository dR2 = Broadcast([], ' ', ' ', 0.0);
+  User user = User(13, 'root', '', 'Strottmann', 'Fabian');
 
   dR1.add('Erste Maessage');
   dR1.add('Zweite Message');
   print('\nMessage List');
   print(dR1.show());
-
+  user.printUser();
   dR2.add('Highschool DxD / Haisukūru Dī Dī');
   dR2.add('Dragonball / Doragonbōru');
-  dR2.add('Naruto Shippūden');
+  dR2.add('Naruto Shippuden / Naruto Shippūden');
   dR2.add('The Eminence in Shadow / Kage no Jitsuryokusha ni Naritakute');
   dR2.add('The Hero Is Overpowered but Overly Cautious / Kono Yūsha ga Ore Tsuē Kuse ni Shinchō Sugiru');
   print('\nBroadcast List');
@@ -19,6 +22,20 @@ void main(List<String> args) {
   /* dR1.delete(0);
   print('Removed');
   print(dR1.show()); */
+}
+
+class User {
+  final int userID;
+  String userName;
+  String? lastName;
+  String? firstName;
+  String picURL;
+
+  User(this.userID, this.userName, this.picURL, [this.lastName, this.firstName]);
+
+  void printUser() {
+    print('\nUser ID: $userID\nUser Name: $userName\nPicture URL: $picURL');
+  }
 }
 
 class Broadcast implements DataRepository {
