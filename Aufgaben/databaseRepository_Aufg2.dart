@@ -3,7 +3,7 @@ import 'dart:io';
 void main(List<String> args) {
   // main Klasse
   DataRepository dR1 = MockDatabaseRepository([]);
-  DataRepository dR2 = Broadcast([], ' ', ' ', 0.0);
+  DataRepository dR2 = Broadcast([], ' ', ' ', 0.0, false);
   User user = User(13, 'root', '', 'Strottmann', 'Fabian');
 
   dR1.add('Erste Maessage');
@@ -12,10 +12,15 @@ void main(List<String> args) {
   print(dR1.show());
   user.printUser();
   dR2.add('Highschool DxD / Haisukūru Dī Dī');
+  // Genre: Fantasy, Comedy, Etchi, Harem
   dR2.add('Dragonball / Doragonbōru');
+  // Genre: Abenteuer, Fantasy, Komödie, Shōnen
   dR2.add('Naruto Shippuden / Naruto Shippūden');
+  // Genre: Shōnen, Action, Abenteuer, Comedy, Fantasy, Drama, Romantik
   dR2.add('The Eminence in Shadow / Kage no Jitsuryokusha ni Naritakute');
+  // Genre: Isekai, Abenteuer
   dR2.add('The Hero Is Overpowered but Overly Cautious / Kono Yūsha ga Ore Tsuē Kuse ni Shinchō Sugiru');
+  // Genre: Isekai, Fantasy, Comedy, Action
   print('\nBroadcast List');
   print(dR2.show());
 
@@ -26,10 +31,9 @@ void main(List<String> args) {
 
 class User {
   final int userID;
-  String userName;
-  String? lastName;
-  String? firstName;
-  String picURL;
+  String userName, picURL;
+  String? lastName, firstName;
+  // String genre;
 
   User(this.userID, this.userName, this.picURL, [this.lastName, this.firstName]);
 
@@ -42,15 +46,19 @@ class Broadcast implements DataRepository {
   List<String> broadcastList;
   String title, description;
   double duration;
+  bool isFavorite = false;
 
-  Broadcast(this.broadcastList, this.title, this.description, this.duration);
+  Broadcast(this.broadcastList, this.title, this.description, this.duration, this.isFavorite);
 
   @override
   void add(String title) {
-    broadcastList.add('\n' + title);
+    if (true) {
+      isFavorite = true;
+      broadcastList.add('\n' + title + '\t' + '$isFavorite');
+    }
   }
 
-  @override // getMessage/ read
+  @override // read
   List<String> show() {
     return broadcastList;
   }
@@ -82,7 +90,7 @@ class MockDatabaseRepository implements DataRepository {
     messages.add('\n' + message);
   }
 
-  @override // show
+  @override // read
   List<String> show() {
     return messages;
   }
