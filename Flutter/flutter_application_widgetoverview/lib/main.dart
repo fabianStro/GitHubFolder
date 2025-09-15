@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: 50.0, left: 25.0),
-                  child: Titles(text: 'text', style: 'color'),
+                  child: Titles(text: 'Hello App Akademie', style: 'color'),
                 ), // Text
               ], // children Row 1
             ), // Row Text1, // Row1
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: 20.0, left: 25.0, bottom: 20.0),
-                  child: Titles(text: 'text', style: 'color'),
+                  child: Titles(text: 'Hello App Akademie', style: 'color'),
                 ), // Text
               ], // children Row 2
             ), // ROW2
