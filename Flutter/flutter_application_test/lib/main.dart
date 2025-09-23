@@ -11,7 +11,8 @@ class Aufg_1_Flutter5 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SafeArea(
+        body: Padding(
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               Expanded(
@@ -22,14 +23,13 @@ class Aufg_1_Flutter5 extends StatelessWidget {
               ),
               Expanded(
                 flex: 60,
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return BoxClass(title: "Element $index", description: "Das ist Beschreibung für Element $index");
-                  },
+                child: Image.network(
+                  'https://www.animeclick.it/immagini/personaggio/Akeno_Himejima/cover/14562-Akeno_Himejima-foto.jpg',
+                  height: 100,
+                  width: 100,
+                  alignment: Alignment.center,
                 ),
               ),
-
               Expanded(
                 flex: 20,
                 child: Center(
@@ -40,20 +40,6 @@ class Aufg_1_Flutter5 extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class BoxClass extends StatelessWidget {
-  final String title;
-  final String description;
-
-  const BoxClass({super.key, required this.title, required this.description});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(title), Text(description)]),
     );
   }
 }
