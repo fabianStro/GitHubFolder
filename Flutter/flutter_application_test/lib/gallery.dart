@@ -6,7 +6,7 @@ void main() {
 
 class GalleryScreen extends StatelessWidget {
   GalleryScreen({super.key});
-  int _currentPageIndex = 0;
+  int currentPageIndex = 0;
   //rgb(102, 0, 31)
 
   @override
@@ -22,9 +22,7 @@ class GalleryScreen extends StatelessWidget {
           ),
           bottomNavigationBar: NavigationBar(
             onDestinationSelected: (int index) {
-              setState(() {
-                _currentPageIndex = index;
-              });
+              currentPageIndex = index;
             },
             destinations: const [
               NavigationDestination(icon: Icon(Icons.home), label: 'Gallery'),

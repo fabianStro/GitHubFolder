@@ -13,6 +13,7 @@ class Detail extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             toolbarHeight: 100.0,
+
             title: Text('Details'),
             centerTitle: true,
             backgroundColor: Colors.blueGrey,
