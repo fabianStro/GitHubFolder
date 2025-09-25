@@ -8,8 +8,10 @@ class DetailWidget extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 100.0,
-
-          title: Text('Details'),
+          title: Text(
+            'Details',
+            style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
+          ),
           centerTitle: true,
           backgroundColor: Color.fromARGB(255, 102, 0, 31),
         ),
