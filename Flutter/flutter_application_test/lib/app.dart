@@ -14,6 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'ARIAL.TTF'),
       initialRoute: '/gallery',
       routes: {
         '/gallery': (context) => GalleryWidget(),

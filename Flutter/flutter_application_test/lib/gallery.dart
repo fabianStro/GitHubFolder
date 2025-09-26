@@ -74,7 +74,17 @@ class _GalleryWidgetState extends State<GalleryWidget> {
               child: Column(
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image(image: AssetImage('assets/images/ski.jpeg'), height: 150, width: 180, fit: BoxFit.cover),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail');
+                    },
+                    child: Image(
+                      image: AssetImage('assets/images/ski.jpeg'),
+                      height: 150,
+                      width: 180,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Text('Ski'),
                 ],
               ),
@@ -97,7 +107,17 @@ class _GalleryWidgetState extends State<GalleryWidget> {
               child: Column(
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image(image: AssetImage('assets/images/running.jpeg'), height: 150, width: 180, fit: BoxFit.cover),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail');
+                    },
+                    child: Image(
+                      image: AssetImage('assets/images/running.jpeg'),
+                      height: 150,
+                      width: 180,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Text('Run'),
                 ],
               ),
@@ -108,7 +128,17 @@ class _GalleryWidgetState extends State<GalleryWidget> {
               child: Column(
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image(image: AssetImage('assets/images/tennis_1.jpeg'), height: 150, width: 180, fit: BoxFit.cover),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail');
+                    },
+                    child: Image(
+                      image: AssetImage('assets/images/tennis_1.jpeg'),
+                      height: 150,
+                      width: 180,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Text('Tennis'),
                 ],
               ),
@@ -119,7 +149,17 @@ class _GalleryWidgetState extends State<GalleryWidget> {
               child: Column(
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image(image: AssetImage('assets/images/soccer.jpeg'), height: 150, width: 180, fit: BoxFit.cover),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail');
+                    },
+                    child: Image(
+                      image: AssetImage('assets/images/soccer.jpeg'),
+                      height: 150,
+                      width: 180,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Text('Socccer'),
                 ],
               ),

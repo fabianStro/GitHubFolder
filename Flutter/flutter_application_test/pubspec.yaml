@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   http: ^1.5.0
+  go_router: ^16.2.4
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +53,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  uses-material-design: true
+  assets:
+
+  fonts:
+  - family: Audiowide
+    fonts:
+      - asset: assets/fonts/Audiowide-Regular.ttf
+      - asset: assets/fomts/ARIAL.TTF
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
