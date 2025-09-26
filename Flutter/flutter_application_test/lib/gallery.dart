@@ -55,7 +55,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/detail');
+                      Navigator.pushNamed(context, '/detail', arguments: 0);
                     },
                     child: Image(
                       image: AssetImage('assets/images/basketball_1.jpeg'),
@@ -76,7 +76,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/detail');
+                      Navigator.pushNamed(context, '/detail', arguments: 1);
                     },
                     child: Image(
                       image: AssetImage('assets/images/ski.jpeg'),
@@ -95,7 +95,17 @@ class _GalleryWidgetState extends State<GalleryWidget> {
               child: Column(
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image(image: AssetImage('assets/images/bike.jpeg'), height: 150, width: 180, fit: BoxFit.cover),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail', arguments: 2);
+                    },
+                    child: Image(
+                      image: AssetImage('assets/images/bike.jpeg'),
+                      height: 150,
+                      width: 180,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Text('Bike'),
                 ],
               ),
@@ -109,7 +119,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/detail');
+                      Navigator.pushNamed(context, '/detail', arguments: 3);
                     },
                     child: Image(
                       image: AssetImage('assets/images/running.jpeg'),
@@ -130,7 +140,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/detail');
+                      Navigator.pushNamed(context, '/detail', arguments: 4);
                     },
                     child: Image(
                       image: AssetImage('assets/images/tennis_1.jpeg'),
@@ -151,7 +161,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/detail');
+                      Navigator.pushNamed(context, '/detail', arguments: 5);
                     },
                     child: Image(
                       image: AssetImage('assets/images/soccer.jpeg'),

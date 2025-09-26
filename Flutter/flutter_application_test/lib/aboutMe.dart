@@ -42,10 +42,15 @@ class _AboutMeState extends State<AboutMe> {
         ), // NavigationBar
         body: ListView(
           children: [
-            ClipRRect(
+            CircleAvatar(
+              radius: 120,
+              backgroundColor: Colors.transparent,
+              backgroundImage: AssetImage('assets/images/kaya.jpeg'),
+            ),
+            /*  ClipRRect(
               borderRadius: BorderRadius.circular(0),
               child: Image(image: AssetImage('assets/images/kaya.jpeg'), width: 50, fit: BoxFit.cover),
-            ),
+            ), */
             Text(
               'Kaya Müller',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blueGrey),
