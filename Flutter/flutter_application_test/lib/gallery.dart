@@ -85,7 +85,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Text('Ski'),
+                  Text('Adrenalin pur!'),
                 ],
               ),
             ),
@@ -106,7 +106,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Text('Bike'),
+                  Text('Achtung Kurve'),
                 ],
               ),
             ),
@@ -128,7 +128,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Text('Run'),
+                  Text('Runners High'),
                 ],
               ),
             ),
@@ -143,16 +143,17 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                       Navigator.pushNamed(context, '/detail', arguments: 4);
                     },
                     child: Image(
-                      image: AssetImage('assets/images/tennis_1.jpeg'),
+                      image: AssetImage('assets/images/basketball_2.jpeg'),
                       height: 150,
                       width: 180,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Text('Tennis'),
+                  Text('Swish'),
                 ],
               ),
             ),
+
             Container(
               //padding: const EdgeInsets.all(8),
               color: Colors.teal[600],
@@ -164,6 +165,50 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                       Navigator.pushNamed(context, '/detail', arguments: 5);
                     },
                     child: Image(
+                      image: AssetImage('assets/images/tennis_1.jpeg'),
+                      height: 150,
+                      width: 180,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Text('Ball Game'),
+                ],
+              ),
+            ),
+
+            Container(
+              //padding: const EdgeInsets.all(8),
+              color: Colors.teal[600],
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail', arguments: 6);
+                    },
+                    child: Image(
+                      image: AssetImage('assets/images/tennis_2.jpeg'),
+                      height: 150,
+                      width: 180,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Text('Tennis'),
+                ],
+              ),
+            ),
+
+            /* Container(
+              //padding: const EdgeInsets.all(8),
+              color: Colors.teal[600],
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail', arguments: 7);
+                    },
+                    child: Image(
                       image: AssetImage('assets/images/soccer.jpeg'),
                       height: 150,
                       width: 180,
@@ -173,7 +218,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                   Text('Socccer'),
                 ],
               ),
-            ),
+            ), */
           ],
         ),
       ),
