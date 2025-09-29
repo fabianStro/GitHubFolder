@@ -1,55 +1,26 @@
 import 'package:flutter/material.dart';
-
-class Schluessel {}
-
-class Auto {
-  Auto(this.farbe, this.marke, this.logo) {
-    print('Auto konstruktor');
-  }
-
-  String? farbe;
-  String? marke;
-  String? logo;
-
-  Zuendung(Schluessel schluessel) {
-    print('Startet');
-  }
-}
-
-class Lkw extends Auto {
-  Lkw(super.farbe, super.marke, super.logo, this.maxBel) {
-    print('LKW Konsruktor');
-  }
-  int maxBel = 7;
-
-  @override
-  Zuendung(Schluessel schluessel) {
-    super.Zuendung(schluessel);
-    print('Lkw');
-  }
-  //auto(this.farbe, this.marke, this.logo);
-
-  /* String? farbe;
-  String? marke;
-  String? logo; */
-}
+import 'package:flutter_lern/choose.dart';
+import 'package:flutter_lern/detail.dart';
+import 'package:flutter_lern/home.dart';
 
 void main() {
-  /*   runApp(const MainApp());
- */
-  Lkw lkw = Lkw('rit', 'MBW', 'Setrn', 4);
-  lkw.Zuendung(Schluessel());
-  Auto auto = Auto('gelb', 'VW', 'VW');
-  auto.Zuendung(Schluessel());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(),
+      initialRoute: '/home',
+      routes: {
+        '/home': (context) => HomeWidget(),
+        '/choose': (context) => ChooseWidget(),
+        '/detail': (context) => DetailWidget(),
+      },
     );
   }
 }

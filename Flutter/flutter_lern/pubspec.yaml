@@ -17,3 +17,25 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+  - family: Audiowide
+    fonts:
+      - asset: assets/fonts/Audiowide-Regular.ttf
+  - family: Arial
+    fonts:
+      - asset: assets/fonts/Arial.ttf
+
+  assets:
+    - assets/images/details/cut_card.png
+    - assets/images/details/snack_snack.png
+    - assets/images/graphics/burger.png
+    - assets/images/graphics/cupcake_chick.png
+    - assets/images/graphics/cupkake_cat.png
+    - assets/images/graphics/icecream_cone.png
+    - assets/images/graphics/icecream_stick.png
+    - assets/images/graphics/icecream.png
+    - assets/images/graphics/star.png
+    - assets/images/background/bg_mainscreen.png
+    - assets/images/background/bg_startscreen.png
+
