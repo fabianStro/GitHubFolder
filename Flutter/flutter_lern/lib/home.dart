@@ -10,70 +10,77 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Container(
-              alignment: Alignment.center,
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Hintergrund
+          SizedBox.expand(child: Image.asset('assets/images/background/bg_startscreen.png', fit: BoxFit.cover)),
+
+          // Cupcake Chick
+          Positioned(top: 150, left: 40, child: Image.asset('assets/images/graphics/cupcake_chick.png')),
+
+          // Snack Overlay
+          Positioned(
+            top: 470,
+            left: 0,
+            right: 0,
+            child: Image.asset('assets/images/details/snack_snack.png', fit: BoxFit.contain),
+          ),
+          Positioned(
+            top: 600,
+            left: 45,
+            child: Container(
+              width: 340,
+              height: 208,
+              padding: EdgeInsets.all(20.0),
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/background/bg_startscreen.png'),
-                  fit: BoxFit.cover,
+                gradient: LinearGradient(colors: [Colors.black.withOpacity(0.6), Colors.transparent]),
+                borderRadius: BorderRadius.circular(20.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 0), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: SizedBox(
+                child: Column(
+                  children: [
+                    Text(
+                      'Feeling Snackish Today?\n',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    Text(
+                      'Explore Angi\'s most popular snack selection and get instantly happy\n\n',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    Align(
+                      /* alignment: Alignment.bottomCenter, */
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/choose');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.pink,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                          minimumSize: Size(200, 40),
+                        ),
+                        child: Text(
+                          'Order Now',
+                          style: TextStyle(fontSize: 16.0, letterSpacing: 2, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            Container(
-              /* Image.asset('assets/images/graphics/cupcake_chick.png')
-                 alignment: Alignment.centerRight, */
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/graphics/cupcake_chick.png'),
-                  // fit: BoxFit.contain,
-                  alignment: Alignment(0.0, 0.0),
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/details/snach_snack.png'),
-                  fit: BoxFit.contain,
-                  alignment: Alignment(0.0, 0.0),
-                ),
-              ),
-            ),
-            Container(
-              child: Text(
-                'Feeling Snackish Today?',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.pink,
-                  //shadows: [Shadow(color: Colors.black.withOpacity(0.5), offset: Offset(2, 2), blurRadius: 4)],
-                ),
-              ),
-              //alignment: Alignment.topCenter,
-              //padding: EdgeInsets.only(top: 100.0),
-              alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.only(bottom: 50.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/choose');
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.pink,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                  minimumSize: Size(200, 40),
-                  alignment: Alignment.center,
-                  // padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
-                ),
-                child: Text('Order Now', style: TextStyle(fontSize: 12.0, letterSpacing: 2, color: Colors.white)),
-              ),
-            ),
-          ], // children
-        ),
+          ),
+        ],
       ),
     );
   }
