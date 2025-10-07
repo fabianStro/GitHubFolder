@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 
 class ChooseWidget extends StatefulWidget {
   const ChooseWidget({super.key});
-
   @override
   State<ChooseWidget> createState() => _ChooseWidgetState();
 }
 
 class _ChooseWidgetState extends State<ChooseWidget> {
-  //String pads = 'top: 10.0, left: 20';
-
   @override
   Widget build(BuildContext context) {
+    var _elevatedButtonForm = ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.pink,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+        minimumSize: const Size(180, 30),
+      ),
+      onPressed: () {
+        Navigator.pushNamed(context, '/detail');
+      },
+      child: const Text('Order Now', style: TextStyle(fontSize: 20.0, color: Colors.white)),
+    );
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -116,7 +125,7 @@ class _ChooseWidgetState extends State<ChooseWidget> {
               ),
             ),
             SizedBox(
-              height: 360,
+              height: 340,
               // width: double.infinity,
               child: Padding(
                 padding: const EdgeInsets.only(left: 25.0),
@@ -148,9 +157,23 @@ class _ChooseWidgetState extends State<ChooseWidget> {
                       textAlign: TextAlign.end,
                       style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
                     ),
-                  ], // children innerBox
+                    SizedBox(height: 100.0),
+                    _elevatedButtonForm,
+                  ], // children
                 ),
               ),
+            ),
+            SizedBox(height: 15.0),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'We Recommend',
+                    style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
             ),
             //#############################################################################
             SingleChildScrollView(
@@ -169,11 +192,21 @@ class _ChooseWidgetState extends State<ChooseWidget> {
                           end: Alignment.bottomRight,
                         ),
                       ),
-                      height: 300,
-                      width: 230,
+                      height: 280,
+                      width: 210,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/detail');
+                          Navigator.pushNamed(
+                            context,
+                            '/detail',
+                            arguments: {
+                              'name': 'Mogli\'s Cup',
+                              'price': '\$8.99',
+                              'picture': 'assets/images/graphics/cupkake_cat.png',
+                              'description':
+                                  'Lorem ipsum dolor sit amet consectetur. Non feugiat imperdiet a vel sit at amet. Mi accumsan feugiat magna aliquam feugiat ac et. pulvinar hendrerit id arcu at sedc etiam semper mi hendererit. Id aliquet quis quam.',
+                            },
+                          );
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(12.0),
@@ -231,11 +264,21 @@ class _ChooseWidgetState extends State<ChooseWidget> {
                           end: Alignment.bottomRight,
                         ),
                       ),
-                      height: 300,
-                      width: 230,
+                      height: 280,
+                      width: 210,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/detail');
+                          Navigator.pushNamed(
+                            context,
+                            '/detail',
+                            arguments: {
+                              'name': 'Balu\'s Cup',
+                              'price': '\$8.99',
+                              'picture': 'assets/images/graphics/icecream.png',
+                              'description':
+                                  'Lorem ipsum dolor sit amet consectetur. Non feugiat imperdiet a vel sit at amet. Mi accumsan feugiat magna aliquam feugiat ac et. pulvinar hendrerit id arcu at sedc etiam semper mi hendererit. Id aliquet quis quam.',
+                            },
+                          );
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(12.0),
@@ -293,12 +336,23 @@ class _ChooseWidgetState extends State<ChooseWidget> {
                           end: Alignment.bottomRight,
                         ),
                       ),
-                      height: 300,
-                      width: 230,
+                      height: 280,
+                      width: 210,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/detail');
+                          Navigator.pushNamed(
+                            context,
+                            '/detail',
+                            arguments: {
+                              'name': 'Smiling David',
+                              'price': '\$3.99',
+                              'picture': 'assets/images/graphics/icecream_stick.png',
+                              'description':
+                                  'Lorem ipsum dolor sit amet consectetur. Non feugiat imperdiet a vel sit at amet. Mi accumsan feugiat magna aliquam feugiat ac et. pulvinar hendrerit id arcu at sedc etiam semper mi hendererit. Id aliquet quis quam.',
+                            },
+                          );
                         },
+
                         child: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: Column(
@@ -355,11 +409,21 @@ class _ChooseWidgetState extends State<ChooseWidget> {
                           end: Alignment.bottomRight,
                         ),
                       ),
-                      height: 300,
-                      width: 230,
+                      height: 280,
+                      width: 210,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/detail');
+                          Navigator.pushNamed(
+                            context,
+                            '/detail',
+                            arguments: {
+                              'name': 'Kai in a Cone',
+                              'price': '\$3.99',
+                              'picture': 'assets/images/graphics/icecream_cone.png',
+                              'description':
+                                  'Lorem ipsum dolor sit amet consectetur. Non feugiat imperdiet a vel sit at amet. Mi accumsan feugiat magna aliquam feugiat ac et. pulvinar hendrerit id arcu at sedc etiam semper mi hendererit. Id aliquet quis quam.',
+                            },
+                          );
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(12.0),
