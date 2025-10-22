@@ -1,4 +1,4 @@
-//import 'dart:async';
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 class TimerWidget extends StatefulWidget {
@@ -9,39 +9,53 @@ class TimerWidget extends StatefulWidget {
 }
 
 class _TimerWidgetState extends State<TimerWidget> {
-  late Stopwatch _stopwatch;
-  late int doubleDigit;
+  int _seconds = 0;
   bool _isRunnin = false;
-  String _time = '00:00:00:00';
+  String _statusText = '';
+  Timer? timer;
 
-  @override
-  void initState() {
-    super.initState();
-    _stopwatch = Stopwatch();
+  final TextEditingController _minController = TextEditingController();
+  final TextEditingController _secController = TextEditingController();
+
+  Future<void> _startTimer() async {
+    if (_isRunnin) return;
+
+    final int min = int.tryParse(_minController.text) ?? 0;
+    final int sec = int.tryParse(_secController.text) ?? 0;
+    setState(() {
+      _seconds = min * 60 + sec;
+      _isRunnin = true;
+      _statusText = 'Timer is runnin';
+    });
+
+    await _runCountdown();
+
+    setState(() {
+      _isRunnin = false;
+      _statusText = 'Timer finished';
+    });
   }
 
-  String _formatTime(Duration duration) {
-    String twoDigits(doubleDigit) => doubleDigit.toString().padLeft(2, '0');
-    final hours = twoDigits(duration.inHours);
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
-    final milliseconds = twoDigits(duration.inMilliseconds.remainder(100));
-    return "$hours:$minutes:$seconds:$milliseconds";
-  }
-
-  Future<void> _runStopwatch() async {
-    while (_isRunnin) {
-      await Future.delayed(const Duration(milliseconds: 100));
-      if (_stopwatch.isRunning) {
-        setState(() {
-          _time = _formatTime(_stopwatch.elapsed);
-        });
-      }
+  Future<void> _runCountdown() async {
+    while (_seconds > 0 && _isRunnin) {
+      await Future.delayed(const Duration(seconds: 1));
+      setState(() {
+        _seconds--;
+      });
     }
+  }
+
+  void _stopTimer() {
+    setState(() {
+      _isRunnin = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final minutes = _seconds ~/ 60;
+    final seconds = _seconds % 60;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -61,63 +75,33 @@ class _TimerWidgetState extends State<TimerWidget> {
               children: [
                 SizedBox(height: 50),
                 TextField(
-                  decoration: InputDecoration(border: OutlineInputBorder(), labelText: '00:00:00:00'),
-                ),
-                SizedBox(height: 5.0),
+                  controller: _minController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Minutes'),
+                ), // TextField
+                SizedBox(height: 10.0),
                 TextField(
-                  decoration: InputDecoration(border: OutlineInputBorder(), labelText: '--:--:--:--'),
-                ),
-                // Text(_time, style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold)),
-                SizedBox(height: 25),
-                SizedBox(
-                  width: 180,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (!_stopwatch.isRunning) {
-                        setState(() {
-                          _isRunnin = true;
-                          _stopwatch.start();
-                        });
-                        _runStopwatch();
-                      }
-                    },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
-                    child: Text('Timer start', style: TextStyle(color: Colors.white)),
-                  ),
-                ), // ElevatedButton Start
-
-                SizedBox(height: 10.0),
-                SizedBox(
-                  width: 180,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _stopwatch.stop();
-                      });
-                    },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
-                    child: Text('Timer stop', style: TextStyle(color: Colors.white)),
-                  ),
-                ), // ElevatedButton Stop
-
-                SizedBox(height: 10.0),
-                SizedBox(
-                  width: 180,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _stopwatch.reset();
-                        _time = '00:00:00';
-                      });
-                    },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
-                    child: Text('Reset', style: TextStyle(color: Colors.white)),
-                  ),
-                ), // ElevatedButton Reset
-              ],
+                  controller: _secController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Seconds'),
+                ), // TextField
+                SizedBox(height: 20.0),
+                Text(
+                  '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
+                  style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                ), // Text
+                SizedBox(height: 20.0),
+                if (!_isRunnin)
+                  ElevatedButton(onPressed: _startTimer, child: const Text('Timer start'))
+                else
+                  ElevatedButton(onPressed: _stopTimer, child: const Text('Timer stop')),
+                SizedBox(height: 50),
+                Text(
+                  _statusText,
+                  style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ), // Text
+              ], // Children
             ), // Column
           ), // Padding
         ), // Center

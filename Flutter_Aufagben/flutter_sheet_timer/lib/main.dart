@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Project',
+      title: 'Timer Project',
       theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Arial'),
       initialRoute: '/timer',
       routes: {
