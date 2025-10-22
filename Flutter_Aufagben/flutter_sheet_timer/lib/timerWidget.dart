@@ -1,14 +1,14 @@
 //import 'dart:async';
 import 'package:flutter/material.dart';
 
-class StopwatchWidget extends StatefulWidget {
-  const StopwatchWidget({super.key});
+class TimerWidget extends StatefulWidget {
+  const TimerWidget({super.key});
 
   @override
-  State<StopwatchWidget> createState() => _StopwatchWidgetState();
+  State<TimerWidget> createState() => _TimerWidgetState();
 }
 
-class _StopwatchWidgetState extends State<StopwatchWidget> {
+class _TimerWidgetState extends State<TimerWidget> {
   late Stopwatch _stopwatch;
   late int doubleDigit;
   bool _isRunnin = false;
@@ -46,7 +46,7 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 100,
-          title: Text('Stopwatch App'),
+          title: Text('Timer App'),
           shape: Border(
             bottom: BorderSide(color: Colors.white),
             top: BorderSide(color: Colors.white),
@@ -60,7 +60,14 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: 50),
-                Text(_time, style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold)),
+                TextField(
+                  decoration: InputDecoration(border: OutlineInputBorder(), labelText: '00:00:00:00'),
+                ),
+                SizedBox(height: 5.0),
+                TextField(
+                  decoration: InputDecoration(border: OutlineInputBorder(), labelText: '--:--:--:--'),
+                ),
+                // Text(_time, style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold)),
                 SizedBox(height: 25),
                 SizedBox(
                   width: 180,

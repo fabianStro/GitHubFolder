@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Project',
       theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Arial'),
-      initialRoute: '/stopwatch',
+      initialRoute: '/timer',
       routes: {
-        '/stopwatch': (context) => StopwatchWidget(),
+        '/timer': (context) => TimerWidget(),
         /*'/registry': (context) => RegistryWidget(),
         '/start': (context) => StartScreenWidget(),
         '/detail': (context) => DetailWidget(), */
