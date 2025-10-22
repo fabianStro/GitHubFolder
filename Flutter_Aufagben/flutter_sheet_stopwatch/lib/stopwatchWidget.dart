@@ -16,11 +16,13 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
 
   @override
   void initState() {
+    doubleDigit = 0;
     super.initState();
     _stopwatch = Stopwatch();
   }
 
   String _formatTime(Duration duration) {
+    //print(doubleDigit);
     String twoDigits(doubleDigit) => doubleDigit.toString().padLeft(2, '0');
     final hours = twoDigits(duration.inHours);
     final minutes = twoDigits(duration.inMinutes.remainder(60));
