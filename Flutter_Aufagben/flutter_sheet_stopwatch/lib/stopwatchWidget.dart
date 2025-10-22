@@ -76,9 +76,9 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                       }
                     },
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
-                    child: Text('Timer start', style: TextStyle(color: Colors.white)),
-                  ),
-                ), // ElevatedButton Start
+                    child: Text('Stopwatch start', style: TextStyle(color: Colors.white)),
+                  ), // ElevatedButton Start
+                ), // SizedBox
 
                 SizedBox(height: 10.0),
                 SizedBox(
@@ -91,9 +91,9 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                       });
                     },
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
-                    child: Text('Timer stop', style: TextStyle(color: Colors.white)),
-                  ),
-                ), // ElevatedButton Stop
+                    child: Text('Stopwatch stop', style: TextStyle(color: Colors.white)),
+                  ), // ElevatedButton Stop
+                ), // SizedBox
 
                 SizedBox(height: 10.0),
                 SizedBox(
@@ -103,13 +103,13 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                     onPressed: () {
                       setState(() {
                         _stopwatch.reset();
-                        _time = '00:00:00';
+                        _time = '00:00:00:00';
                       });
                     },
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
                     child: Text('Reset', style: TextStyle(color: Colors.white)),
-                  ),
-                ), // ElevatedButton Reset
+                  ), // ElevatedButton Reset
+                ), // SizedBox
               ],
             ), // Column
           ), // Padding
