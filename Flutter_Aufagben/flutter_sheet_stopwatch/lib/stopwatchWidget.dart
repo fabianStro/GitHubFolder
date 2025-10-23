@@ -69,6 +69,8 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                   height: 40,
                   child: ElevatedButton(
                     onPressed: () {
+                      const snackbarStart = SnackBar(content: Text('Stopwatch started'), showCloseIcon: true);
+                      ScaffoldMessenger.of(context).showSnackBar(snackbarStart);
                       if (!_stopwatch.isRunning) {
                         setState(() {
                           _isRunnin = true;
@@ -88,6 +90,8 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                   height: 40,
                   child: ElevatedButton(
                     onPressed: () {
+                      const snackbarStop = SnackBar(content: Text('Stopwatch stopped'), showCloseIcon: true);
+                      ScaffoldMessenger.of(context).showSnackBar(snackbarStop);
                       setState(() {
                         _stopwatch.stop();
                       });
@@ -103,6 +107,8 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                   height: 40,
                   child: ElevatedButton(
                     onPressed: () {
+                      const snackbarReset = SnackBar(content: Text('Stopwatch reseted'), showCloseIcon: true);
+                      ScaffoldMessenger.of(context).showSnackBar(snackbarReset);
                       setState(() {
                         _stopwatch.reset();
                         _time = '00:00:00:00';
