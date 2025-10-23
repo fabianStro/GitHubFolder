@@ -14,12 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Timer Project',
       theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Arial'),
       initialRoute: '/timer',
-      routes: {
-        '/timer': (context) => TimerWidget(),
-        /*'/registry': (context) => RegistryWidget(),
-        '/start': (context) => StartScreenWidget(),
-        '/detail': (context) => DetailWidget(), */
-      }, // routes
+      routes: {'/timer': (context) => TimerWidget()}, // routes
     ); // MaterialApp
   }
 }

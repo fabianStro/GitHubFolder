@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 
@@ -60,6 +62,24 @@ class _TimerWidgetState extends State<TimerWidget> {
     final minutes = _seconds ~/ 60;
     final seconds = _seconds % 60;
 
+    TextField textFieldMin = TextField(
+      controller: _minController,
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(90)),
+        labelText: 'Minutes',
+      ), // InputDecoration
+    ); // TextField
+
+    TextField textFieldSec = TextField(
+      controller: _secController,
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(90)),
+        labelText: 'Seconds',
+      ), // InputDecoration
+    ); // TextField
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: color,
@@ -79,23 +99,9 @@ class _TimerWidgetState extends State<TimerWidget> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: 50),
-                TextField(
-                  controller: _minController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(90)),
-                    labelText: 'Minutes',
-                  ),
-                ), // TextField
+                textFieldMin, // TextFieldMin
                 SizedBox(height: 10.0),
-                TextField(
-                  controller: _secController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(90)),
-                    labelText: 'Seconds',
-                  ),
-                ), // TextField
+                textFieldSec, // TextFieldSec
                 SizedBox(height: 20.0),
                 Text(
                   '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
