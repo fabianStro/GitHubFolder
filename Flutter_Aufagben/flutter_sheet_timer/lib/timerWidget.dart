@@ -13,6 +13,7 @@ class _TimerWidgetState extends State<TimerWidget> {
   bool _isRunnin = false;
   String _statusText = '';
   Timer? timer;
+  var color = Colors.black;
 
   final TextEditingController _minController = TextEditingController();
   final TextEditingController _secController = TextEditingController();
@@ -25,6 +26,8 @@ class _TimerWidgetState extends State<TimerWidget> {
     setState(() {
       _seconds = min * 60 + sec;
       _isRunnin = true;
+      const snackbarRun = SnackBar(content: Text('Timer is runnin'), showCloseIcon: true);
+      ScaffoldMessenger.of(context).showSnackBar(snackbarRun);
       _statusText = 'Timer is runnin';
     });
 
@@ -33,6 +36,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     setState(() {
       _isRunnin = false;
       _statusText = 'Timer finished';
+      color = Colors.green;
     });
   }
 
@@ -58,6 +62,7 @@ class _TimerWidgetState extends State<TimerWidget> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: color,
         appBar: AppBar(
           toolbarHeight: 100,
           title: Text('Timer App'),
@@ -77,13 +82,19 @@ class _TimerWidgetState extends State<TimerWidget> {
                 TextField(
                   controller: _minController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Minutes'),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(90)),
+                    labelText: 'Minutes',
+                  ),
                 ), // TextField
                 SizedBox(height: 10.0),
                 TextField(
                   controller: _secController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Seconds'),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(90)),
+                    labelText: 'Seconds',
+                  ),
                 ), // TextField
                 SizedBox(height: 20.0),
                 Text(
