@@ -1,4 +1,6 @@
 //import 'dart:async';
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class StopwatchWidget extends StatefulWidget {
@@ -44,6 +46,11 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
 
   @override
   Widget build(BuildContext context) {
+    ButtonStyle buttonStyle = ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey));
+    const snackbarStart = SnackBar(content: Text('Stopwatch started'), showCloseIcon: true);
+    const snackbarStop = SnackBar(content: Text('Stopwatch stopped'), showCloseIcon: true);
+    const snackbarReset = SnackBar(content: Text('Stopwatch reseted'), showCloseIcon: true);
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -69,7 +76,6 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                   height: 40,
                   child: ElevatedButton(
                     onPressed: () {
-                      const snackbarStart = SnackBar(content: Text('Stopwatch started'), showCloseIcon: true);
                       ScaffoldMessenger.of(context).showSnackBar(snackbarStart);
                       if (!_stopwatch.isRunning) {
                         setState(() {
@@ -79,7 +85,7 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                         _runStopwatch();
                       }
                     },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
+                    style: buttonStyle,
                     child: Text('Stopwatch start', style: TextStyle(color: Colors.white)),
                   ), // ElevatedButton Start
                 ), // SizedBox
@@ -90,13 +96,12 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                   height: 40,
                   child: ElevatedButton(
                     onPressed: () {
-                      const snackbarStop = SnackBar(content: Text('Stopwatch stopped'), showCloseIcon: true);
                       ScaffoldMessenger.of(context).showSnackBar(snackbarStop);
                       setState(() {
                         _stopwatch.stop();
                       });
                     },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
+                    style: buttonStyle,
                     child: Text('Stopwatch stop', style: TextStyle(color: Colors.white)),
                   ), // ElevatedButton Stop
                 ), // SizedBox
@@ -107,14 +112,13 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
                   height: 40,
                   child: ElevatedButton(
                     onPressed: () {
-                      const snackbarReset = SnackBar(content: Text('Stopwatch reseted'), showCloseIcon: true);
                       ScaffoldMessenger.of(context).showSnackBar(snackbarReset);
                       setState(() {
                         _stopwatch.reset();
                         _time = '00:00:00:00';
                       });
                     },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey)),
+                    style: buttonStyle,
                     child: Text('Reset', style: TextStyle(color: Colors.white)),
                   ), // ElevatedButton Reset
                 ), // SizedBox
