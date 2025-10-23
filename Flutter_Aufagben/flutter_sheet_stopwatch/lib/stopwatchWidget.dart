@@ -47,9 +47,9 @@ class _StopwatchWidgetState extends State<StopwatchWidget> {
   @override
   Widget build(BuildContext context) {
     ButtonStyle buttonStyle = ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.grey));
-    const snackbarStart = SnackBar(content: Text('Stopwatch started'), showCloseIcon: true);
-    const snackbarStop = SnackBar(content: Text('Stopwatch stopped'), showCloseIcon: true);
-    const snackbarReset = SnackBar(content: Text('Stopwatch reseted'), showCloseIcon: true);
+    const SnackBar snackbarStart = SnackBar(content: Text('Stopwatch started'), showCloseIcon: true);
+    const SnackBar snackbarStop = SnackBar(content: Text('Stopwatch stopped'), showCloseIcon: true);
+    const SnackBar snackbarReset = SnackBar(content: Text('Stopwatch reseted'), showCloseIcon: true);
 
     return SafeArea(
       child: Scaffold(
