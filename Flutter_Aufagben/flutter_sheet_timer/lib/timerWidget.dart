@@ -15,7 +15,8 @@ class _TimerWidgetState extends State<TimerWidget> {
   bool _isRunnin = false;
   String _statusText = '';
   Timer? timer;
-  var color = Colors.black;
+
+  Color _bgcolor = Colors.black;
 
   final TextEditingController _minController = TextEditingController();
   final TextEditingController _secController = TextEditingController();
@@ -38,7 +39,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     setState(() {
       _isRunnin = false;
       _statusText = 'Timer finished';
-      color = Colors.green;
+      _bgcolor = Colors.green;
     });
   }
 
@@ -80,18 +81,20 @@ class _TimerWidgetState extends State<TimerWidget> {
       ), // InputDecoration
     ); // TextField
 
+    AppBar appBarTimer = AppBar(
+      toolbarHeight: 100,
+      title: Text('Timer App'),
+      shape: Border(
+        bottom: BorderSide(color: Colors.white),
+        top: BorderSide(color: Colors.white),
+      ), // Border der AppBar
+      centerTitle: true,
+    ); // AppBar
+
     return SafeArea(
       child: Scaffold(
-        backgroundColor: color,
-        appBar: AppBar(
-          toolbarHeight: 100,
-          title: Text('Timer App'),
-          shape: Border(
-            bottom: BorderSide(color: Colors.white),
-            top: BorderSide(color: Colors.white),
-          ), // Border der AppBar
-          centerTitle: true,
-        ), // AppBar
+        backgroundColor: _bgcolor,
+        appBar: appBarTimer,
         body: Center(
           child: Padding(
             padding: const EdgeInsets.only(left: 50.0, right: 50.0),
