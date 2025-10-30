@@ -10,7 +10,7 @@ class DogShowWidget extends StatefulWidget {
 }
 
 class _DogShowWidgetState extends State<DogShowWidget> {
-  String _dog = 'Show Dog';
+  final String _dog = 'Show Dog';
 
   @override
   void initState() {
@@ -20,6 +20,39 @@ class _DogShowWidgetState extends State<DogShowWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var expanded1 = Expanded(
+      child: FutureBuilder(
+        future: getDogData(),
+        builder: (context, snapshot) {
+          final List<String> list = snapshot.data ?? [];
+          return ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                leading: Text(
+                  list[index].toUpperCase(),
+                  style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),
+                ), // Text
+              ); // ListTile
+            },
+          ); // ListView.builder
+        },
+      ), // FutureBuilder
+    ); // Expanded
+    // ############################################################################
+    var expanded2 = Expanded(
+      child: FutureBuilder(
+        future: getRandomDogImage(),
+        builder: (context, snapshot) {
+          final String content = snapshot.data ?? ' ';
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Image.network(content, width: 300, height: 300)],
+          ); // Row
+        },
+      ), // FutureBuilder
+    ); // Expanded
+    // ############################################################################################
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -31,56 +64,66 @@ class _DogShowWidgetState extends State<DogShowWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
         ), // AppBar
-        body: Row(
+        body: Column(
           children: [
-            FutureBuilder(
-              future: getDogData(),
-              builder: (context, snapshot) {
-                final list = snapshot.data;
-                final text = list?.join(",") ?? '';
-                return Text(text);
+            expanded1,
+            SizedBox(height: 10.0),
+            Divider(color: Colors.white, thickness: 2),
+            SizedBox(height: 10.0),
+            GestureDetector(
+              onTap: () {
+                expanded2;
+                setState(() {});
               },
-            ), // FutureBuilder
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0, left: 90.0),
-              child: DropdownMenu(
-                label: Text(
-                  'Colors',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                ), // Text
-                width: 200.0,
-                onSelected: (dog) {
-                  if (dog != null) {
-                    setState(() {
-                      _dog = 'Bal Blub';
-                    });
-                  }
-                },
-                dropdownMenuEntries: <DropdownMenuEntry<Color>>[
-                  DropdownMenuEntry(value: Colors.red, label: 'Red'),
-                  DropdownMenuEntry(value: Colors.blue, label: 'Blue'),
-                  DropdownMenuEntry(value: Colors.green, label: 'Green'),
-                ], // DropdownMenuEntry<Color>>[]
-              ), // DropdownMenu
-            ), // Padding
-            //Text(),
+              child: const Text('Push me'),
+            ),
           ],
-        ), // Row
+        ), // Column
       ), // Scaffold
     ); // SafeArea
   }
 }
 
-Future<List> getDogData() async {
-  const uriString = 'https://dog.ceo/api/breeds/list/all';
+Future<List<String>> getDogData() async {
+  const String uriString = 'https://dog.ceo/api/breeds/list/all';
   final response = await http.get(Uri.parse(uriString));
   List<String> dogList = [];
-
   final dogData = jsonDecode(response.body);
-  final dogJsonList = dogData[''];
-
-  for (final dog in dogJsonList) {
-    dogList.add(dog['message']);
+  final Map dogJsonMap = dogData['message'];
+  for (final dog in dogJsonMap.keys) {
+    dogList.add(dog);
   }
   return dogList;
 }
+
+Future<String> getRandomDogImage() async {
+  const String uriRandomDogImage = 'https://dog.ceo/api/breeds/image/random';
+  final responseRandomImage = await http.get(Uri.parse(uriRandomDogImage));
+  final data = jsonDecode(responseRandomImage.body);
+  final randomImageData = data['message'];
+  return randomImageData;
+}
+
+
+
+
+ //Image.network(getRandomDogImage() as String),
+      /*  child: DropdownMenu(
+                  label: Text(
+                    'Colors',
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  ), // Text
+                  width: 200.0,
+                  onSelected: (dog) {
+                    if (dog != null) {
+                      setState(() {
+                        _dog = 'Bal Blub';
+                      });
+                    }
+                  },
+                  dropdownMenuEntries: <DropdownMenuEntry<Color>>[
+                    DropdownMenuEntry(value: Colors.red, label: 'Red'),
+                    DropdownMenuEntry(value: Colors.blue, label: 'Blue'),
+                    DropdownMenuEntry(value: Colors.green, label: 'Green'),
+                  ], // DropdownMenuEntry<Color>>[]
+                ), // DropdownMenu */
