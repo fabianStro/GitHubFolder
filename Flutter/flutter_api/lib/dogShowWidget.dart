@@ -12,49 +12,54 @@ class DogShowWidget extends StatefulWidget {
 class _DogShowWidgetState extends State<DogShowWidget> {
   final String _dog = 'Show Dog';
 
+  var expanded1 = Expanded(
+    child: FutureBuilder(
+      future: getDogData(),
+      builder: (context, snapshot) {
+        final List<String> list = snapshot.data ?? [];
+        return ListView.builder(
+          itemCount: list.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              leading: Text(
+                list[index].toUpperCase(),
+                style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),
+              ), // Text
+            ); // ListTile
+          },
+        ); // ListView.builder
+      },
+    ), // FutureBuilder
+  ); // Expanded
+  // ############################################################################
+  var expanded2 = Expanded(
+    child: FutureBuilder(
+      future: getRandomDogImage(),
+      builder: (context, snapshot) {
+        final String content = snapshot.data ?? ' ';
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Image.network(content, width: 300, height: 300)],
+        ); // Row
+      },
+    ), // FutureBuilder
+  ); // Expanded
+
+  late Widget expandedWidget;
+
+  // ############################################################################################
+
   @override
   void initState() {
     super.initState();
+    expandedWidget = expanded1;
     getDogData();
   }
 
+  // ############################################################################################
+
   @override
   Widget build(BuildContext context) {
-    var expanded1 = Expanded(
-      child: FutureBuilder(
-        future: getDogData(),
-        builder: (context, snapshot) {
-          final List<String> list = snapshot.data ?? [];
-          return ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: Text(
-                  list[index].toUpperCase(),
-                  style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),
-                ), // Text
-              ); // ListTile
-            },
-          ); // ListView.builder
-        },
-      ), // FutureBuilder
-    ); // Expanded
-    // ############################################################################
-    var expanded2 = Expanded(
-      child: FutureBuilder(
-        future: getRandomDogImage(),
-        builder: (context, snapshot) {
-          final String content = snapshot.data ?? ' ';
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Image.network(content, width: 300, height: 300)],
-          ); // Row
-        },
-      ), // FutureBuilder
-    ); // Expanded
-
-    Widget expandedWidget = expanded1;
-    // ############################################################################################
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -68,18 +73,20 @@ class _DogShowWidgetState extends State<DogShowWidget> {
         ), // AppBar
         body: Column(
           children: [
-            expanded1,
+            expandedWidget,
             SizedBox(height: 10.0),
             Divider(color: Colors.white, thickness: 2),
             SizedBox(height: 10.0),
             GestureDetector(
               onTap: () {
+                // print('Tap gut');
                 expandedWidget = expanded2;
                 setState(() {});
               },
               child: const Text('Push me'),
-            ), // GestureDetector
-          ],
+            ),
+            SizedBox(height: 30.0),
+          ], // GestureDetector
         ), // Column
       ), // Scaffold
     ); // SafeArea
