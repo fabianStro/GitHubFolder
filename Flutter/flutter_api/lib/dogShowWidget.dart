@@ -52,6 +52,8 @@ class _DogShowWidgetState extends State<DogShowWidget> {
         },
       ), // FutureBuilder
     ); // Expanded
+
+    Widget expandedWidget = expanded1;
     // ############################################################################################
     return SafeArea(
       child: Scaffold(
@@ -72,11 +74,11 @@ class _DogShowWidgetState extends State<DogShowWidget> {
             SizedBox(height: 10.0),
             GestureDetector(
               onTap: () {
-                expanded2;
+                expandedWidget = expanded2;
                 setState(() {});
               },
               child: const Text('Push me'),
-            ),
+            ), // GestureDetector
           ],
         ), // Column
       ), // Scaffold
