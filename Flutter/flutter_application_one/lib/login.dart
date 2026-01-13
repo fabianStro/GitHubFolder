@@ -1,6 +1,10 @@
-// import 'package:supabase_flutter/supabase_flutter.dart';
+// ignore_for_file: camel_case_types, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'loginArchitecture.dart';
+import 'features/login_button.dart';
+import 'features/input_validators.dart';
+// import 'package:flutter_application_one/auth_Service.dart';
+// import 'package:provider/provider.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
@@ -10,33 +14,34 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  // ############################################################################
-  // Controller für Textfelder
-  // ############################################################################
   final TextEditingController _emailController = TextEditingController(), _passwordController = TextEditingController();
+  final ValueNotifier<bool> isValid = ValueNotifier<bool>(false);
+  final Text heading01 = Text(
+    'ATVPG',
+    style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'),
+  ); // Text
+  final Text heading02 = Text('LOGIN', style: TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial'));
 
-  // ############################################################################
-  // Stile und Konstanten
-  // ############################################################################
-  final ButtonStyle buttonStyle = ElevatedButton.styleFrom(backgroundColor: Colors.grey);
-  final TextStyle buttonTextStyle = TextStyle(color: Colors.white, fontFamily: 'Arial'),
-      registryAndForgotTextStyle = TextStyle(
-        color: Colors.grey[400],
-        fontFamily: 'Arial',
-        fontSize: 17.0,
-        decoration: TextDecoration.underline,
-      );
-  final Text heading = Text('ATVPG', style: TextStyle(fontSize: 50.0, letterSpacing: 2.2, fontFamily: 'Audiowide'));
-  final Text heading2 = Text('LOGIN', style: TextStyle(fontSize: 35.0, letterSpacing: 2.0, fontFamily: 'Arial'));
+  @override
+  void initState() {
+    super.initState();
+
+    _passwordController.addListener(_validate);
+  }
+
+  void _validate() {
+    final email_Ok = validateEmail(_emailController.text) == null;
+    final pw_Ok = validatePw(_passwordController.text) == null;
+
+    isValid.value = email_Ok && pw_Ok;
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        //resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          //backgroundColor: Colors.black,
           automaticallyImplyLeading: false,
           toolbarHeight: 100.0,
           shape: Border(
@@ -44,14 +49,14 @@ class _LoginWidgetState extends State<LoginWidget> {
             top: BorderSide(color: Colors.white, width: 2.0),
           ), // Border
           centerTitle: true,
-          title: heading,
+          title: heading01,
         ), // AppBar
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 60.0, right: 60.0),
+            padding: EdgeInsets.only(left: 60.0, right: 60.0),
             child: Column(
               children: [
-                Padding(padding: const EdgeInsets.only(top: 200.0), child: heading2), // Padding
+                Padding(padding: EdgeInsets.only(top: 200.0), child: heading02),
                 SizedBox(height: 20.0),
                 TextFormField(
                   autocorrect: false,
@@ -79,60 +84,54 @@ class _LoginWidgetState extends State<LoginWidget> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                 ), // TextFormField
                 SizedBox(height: 25.0),
-                LoginArchitectureWidget(
-                  buttonStyle: buttonStyle,
+                // ############################# Login Button #############################
+                LoginButton(
+                  isValid: isValid,
                   emailController: _emailController,
                   passwordController: _passwordController,
-                  buttonTextStyle: buttonTextStyle,
-                ), // LoginArchitectureWidget
+                ), // LoginButton
+                // ########################################################################
                 SizedBox(height: 15.0),
-                Align(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/forgot');
-                    },
-                    child: Text('Forgot your password?', style: registryAndForgotTextStyle),
-                  ), // GestureDetector
-                ), // Align
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, '/forgot'),
+                  child: Text(
+                    'Forgot your password?',
+                    style: TextStyle(
+                      color: Colors.grey[400],
+                      fontFamily: 'Arial',
+                      fontSize: 17.0,
+                      decoration: TextDecoration.underline,
+                    ), // TextStyle
+                  ), // Text
+                ), // GestureDetector
                 SizedBox(height: 8.0),
                 Text(
                   'or',
                   style: TextStyle(color: Colors.grey[400], fontFamily: 'Arial', fontSize: 17.0),
                 ), // Text
                 SizedBox(height: 8.0),
-                Align(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/registry');
-                    },
-                    child: Text('Registration', style: registryAndForgotTextStyle),
-                  ), // GestureDetector
-                ), // Align
-              ], // Children
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, '/registry'),
+                  child: Text(
+                    'Registration',
+                    style: TextStyle(
+                      color: Colors.grey[400],
+                      fontFamily: 'Arial',
+                      fontSize: 17.0,
+                      decoration: TextDecoration.underline,
+                    ), // TextStyle
+                  ), // Text
+                ), // GestureDetector
+                SizedBox(height: 85.0),
+                Text(
+                  '2025 \u00a9 ATVPG All Rights Reserved',
+                  style: TextStyle(color: Colors.grey[600], fontFamily: 'Arial'),
+                ),
+              ], // children
             ), // Column
           ), // Padding
         ), // SingleChildScrollView
       ), // Scaffold
     ); // SafeArea
   }
-
-  String? validatePw(String? value) {
-    if (value == null || value == '') {
-      return 'Enter the password';
-    } else if (value.length >= 8) {
-      return null;
-    } else {
-      return 'minimum 8 characters';
-    }
-  }
-}
-
-String? validateEmail(String? value) {
-  final emailPattern = r'^[^@\s]+@[^@\s]+\.[^@\s]+$';
-  final regex = RegExp(emailPattern);
-
-  if (!regex.hasMatch(value!)) {
-    return 'Enter a valid e-mail';
-  }
-  return null;
 }
